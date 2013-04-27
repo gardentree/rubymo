@@ -1,0 +1,221 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<class name='AwesomeMenu'>
+<method selector='closeRotation'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+<method selector='contentImage'>
+<retval type='@' declared_type='UIImage*'/>
+</method>
+<method selector='delegate'>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='endRadius'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+<method selector='expandRotation'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+<method selector='farRadius'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+<method selector='highlightedContentImage'>
+<retval type='@' declared_type='UIImage*'/>
+</method>
+<method selector='highlightedImage'>
+<retval type='@' declared_type='UIImage*'/>
+</method>
+<method selector='image'>
+<retval type='@' declared_type='UIImage*'/>
+</method>
+<method selector='initWithFrame:menus:'>
+<arg name='frame' index='0' type='{CGRect={CGPoint=ff}{CGSize=ff}}' declared_type='CGRect'/>
+<arg name='aMenusArray' index='1' type='@' declared_type='NSArray*'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='isExpanding'>
+<retval type='B' declared_type='BOOL'/>
+</method>
+<method selector='menuWholeAngle'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+<method selector='menusArray'>
+<retval type='@' declared_type='NSArray*'/>
+</method>
+<method selector='nearRadius'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+<method selector='rotateAngle'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+<method selector='setCloseRotation:'>
+<arg name='closeRotation' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setContentImage:'>
+<arg name='contentImage' index='0' type='@' declared_type='UIImage*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' index='0' type='@' declared_type='id'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setEndRadius:'>
+<arg name='endRadius' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setExpandRotation:'>
+<arg name='expandRotation' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setExpanding:'>
+<arg name='expanding' index='0' type='B' declared_type='BOOL'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setFarRadius:'>
+<arg name='farRadius' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setHighlightedContentImage:'>
+<arg name='highlightedContentImage' index='0' type='@' declared_type='UIImage*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setHighlightedImage:'>
+<arg name='highlightedImage' index='0' type='@' declared_type='UIImage*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setImage:'>
+<arg name='image' index='0' type='@' declared_type='UIImage*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setMenuWholeAngle:'>
+<arg name='menuWholeAngle' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setMenusArray:'>
+<arg name='menusArray' index='0' type='@' declared_type='NSArray*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setNearRadius:'>
+<arg name='nearRadius' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setRotateAngle:'>
+<arg name='rotateAngle' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setStartPoint:'>
+<arg name='startPoint' index='0' type='{CGPoint=ff}' declared_type='CGPoint'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setTimeOffset:'>
+<arg name='timeOffset' index='0' type='f' declared_type='CGFloat'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='startPoint'>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
+</method>
+<method selector='timeOffset'>
+<retval type='f' declared_type='CGFloat'/>
+</method>
+</class>
+<class name='AwesomeMenuItem'>
+<method selector='contentImageView'>
+<retval type='@' declared_type='UIImageView*'/>
+</method>
+<method selector='delegate'>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='endPoint'>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
+</method>
+<method selector='farPoint'>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
+</method>
+<method selector='initWithImage:highlightedImage:ContentImage:highlightedContentImage:'>
+<arg name='img' index='0' type='@' declared_type='UIImage*'/>
+<arg name='himg' index='1' type='@' declared_type='UIImage*'/>
+<arg name='cimg' index='2' type='@' declared_type='UIImage*'/>
+<arg name='hcimg' index='3' type='@' declared_type='UIImage*'/>
+<retval type='@' declared_type='id'/>
+</method>
+<method selector='nearPoint'>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
+</method>
+<method selector='setContentImageView:'>
+<arg name='contentImageView' index='0' type='@' declared_type='UIImageView*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setDelegate:'>
+<arg name='delegate' index='0' type='@' declared_type='id'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setEndPoint:'>
+<arg name='endPoint' index='0' type='{CGPoint=ff}' declared_type='CGPoint'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setFarPoint:'>
+<arg name='farPoint' index='0' type='{CGPoint=ff}' declared_type='CGPoint'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setNearPoint:'>
+<arg name='nearPoint' index='0' type='{CGPoint=ff}' declared_type='CGPoint'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='setStartPoint:'>
+<arg name='startPoint' index='0' type='{CGPoint=ff}' declared_type='CGPoint'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='startPoint'>
+<retval type='{CGPoint=ff}' declared_type='CGPoint'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='AwesomeMenu:didSelectIndex:'>
+<arg name='menu' index='0' type='@' declared_type='AwesomeMenu*'/>
+<arg name='idx' index='1' type='i' declared_type='NSInteger'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='AwesomeMenuDidFinishAnimationClose:'>
+<arg name='menu' index='0' type='@' declared_type='AwesomeMenu*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='AwesomeMenuDidFinishAnimationOpen:'>
+<arg name='menu' index='0' type='@' declared_type='AwesomeMenu*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='AwesomeMenuItemTouchesBegan:'>
+<arg name='item' index='0' type='@' declared_type='AwesomeMenuItem*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method selector='AwesomeMenuItemTouchesEnd:'>
+<arg name='item' index='0' type='@' declared_type='AwesomeMenuItem*'/>
+<retval type='v' declared_type='void'/>
+</method>
+</class>
+<informal_protocol name='AwesomeMenuDelegate'>
+<method type='v16@0:4@8i12' selector='AwesomeMenu:didSelectIndex:'>
+<arg name='menu' index='0' type='@' declared_type='AwesomeMenu*'/>
+<arg name='idx' index='1' type='i' declared_type='NSInteger'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v12@0:4@8' selector='AwesomeMenuDidFinishAnimationClose:'>
+<arg name='menu' index='0' type='@' declared_type='AwesomeMenu*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v12@0:4@8' selector='AwesomeMenuDidFinishAnimationOpen:'>
+<arg name='menu' index='0' type='@' declared_type='AwesomeMenu*'/>
+<retval type='v' declared_type='void'/>
+</method>
+</informal_protocol>
+<informal_protocol name='AwesomeMenuItemDelegate'>
+<method type='v12@0:4@8' selector='AwesomeMenuItemTouchesBegan:'>
+<arg name='item' index='0' type='@' declared_type='AwesomeMenuItem*'/>
+<retval type='v' declared_type='void'/>
+</method>
+<method type='v12@0:4@8' selector='AwesomeMenuItemTouchesEnd:'>
+<arg name='item' index='0' type='@' declared_type='AwesomeMenuItem*'/>
+<retval type='v' declared_type='void'/>
+</method>
+</informal_protocol>
+</signatures>

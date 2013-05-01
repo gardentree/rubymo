@@ -10,4 +10,8 @@ Motion::Project::App.setup do |app|
   app.frameworks << "QuartzCore"
 
   app.vendor_project('vendor/AwesomeMenu',:xcode)
+
+  app.pods do
+    pod 'ECSlidingViewController'
+  end
 end

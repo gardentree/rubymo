@@ -17,3 +17,5 @@ nbproject
 
 .build
 build-iPhoneSimulator
+
+vendor/Pods

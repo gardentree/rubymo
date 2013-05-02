@@ -13,6 +13,11 @@ class TopViewController < UIViewController
     }.call
 
     lambda {
+      @image = UIImageView.alloc.initWithImage(UIImage.imageNamed('Default.png'))
+      view.addSubview(@image)
+    }.call
+
+    lambda {
       image   = UIImage.imageNamed('bg-menuitem.png')
       pressed = UIImage.imageNamed('bg-menuitem-hightlighted.png')
       star    = UIImage.imageNamed('icon-star.png')
@@ -31,6 +36,32 @@ class TopViewController < UIViewController
     }.call
 
     # self.view.backgroundColor = UIColor.blueColor
+  end
+
+  def AwesomeMenu(menu,didSelectIndex: index)
+    case index
+    when 0
+      sheet = UIActionSheet.alloc.initWithTitle(nil,delegate: self,cancelButtonTitle: 'Cancel',destructiveButtonTitle: nil,otherButtonTitles: 'Take Photo','Choose from Album',nil)
+      sheet.showFromToolbar(navigationController.toolbar)
+    when 1
+    when 2
+    when 3
+    end
+  end
+  def actionSheet(sheet,clickedButtonAtIndex:index)
+    callback = Proc.new {|result|
+      @image.image = result[:original_image]
+      @image.frame = self.view.frame;
+    }
+
+    case index
+    when 0
+      BW::Device.camera.rear.picture({media_types: [:image]},self,&callback)
+    when 1
+      BW::Device.camera.any.picture({media_types: [:image]},self,&callback)
+    when sheet.cancelButtonIndex
+      return
+    end
   end
 
   def action_tapped

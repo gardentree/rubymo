@@ -26,7 +26,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     CGAffineTransform translation = CGAffineTransformMakeTranslation(center.x, center.y);
     CGAffineTransform rotation = CGAffineTransformMakeRotation(angle);
     CGAffineTransform transformGroup = CGAffineTransformConcat(CGAffineTransformConcat(CGAffineTransformInvert(translation), rotation), translation);
-    return CGPointApplyAffineTransform(point, transformGroup);    
+    return CGPointApplyAffineTransform(point, transformGroup);
 }
 
 @interface AwesomeMenu ()
@@ -50,7 +50,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-		
+
 		self.nearRadius = kAwesomeMenuDefaultNearRadius;
 		self.endRadius = kAwesomeMenuDefaultEndRadius;
 		self.farRadius = kAwesomeMenuDefaultFarRadius;
@@ -60,14 +60,14 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 		self.startPoint = CGPointMake(kAwesomeMenuDefaultStartPointX, kAwesomeMenuDefaultStartPointY);
         self.expandRotation = kAwesomeMenuDefaultExpandRotation;
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
-        
+
         self.menusArray = aMenusArray;
-        
+
         // add the "Add" Button.
-        _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
-                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"] 
-                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"] 
-                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
+        _addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"menu/bg-addbutton.png"]
+                                       highlightedImage:[UIImage imageNamed:@"menu/bg-addbutton-highlighted.png"]
+                                           ContentImage:[UIImage imageNamed:@"menu/icon-plus.png"]
+                                highlightedContentImage:[UIImage imageNamed:@"menu/icon-plus-highlighted.png"]];
         _addButton.delegate = self;
         _addButton.center = self.startPoint;
         [self addSubview:_addButton];
@@ -120,18 +120,18 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 }
 
 
-                               
+
 #pragma mark - UIView's methods
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
     // if the menu is animating, prevent touches
-    if (_isAnimating) 
+    if (_isAnimating)
     {
         return NO;
     }
     // if the menu state is expanding, everywhere can be touch
     // otherwise, only the add button are can be touch
-    if (YES == _expanding) 
+    if (YES == _expanding)
     {
         return YES;
     }
@@ -149,7 +149,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 #pragma mark - AwesomeMenuItem delegates
 - (void)AwesomeMenuItemTouchesBegan:(AwesomeMenuItem *)item
 {
-    if (item == _addButton) 
+    if (item == _addButton)
     {
         self.expanding = !self.isExpanding;
     }
@@ -157,7 +157,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 - (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item
 {
     // exclude the "add" button
-    if (item == _addButton) 
+    if (item == _addButton)
     {
         return;
     }
@@ -165,7 +165,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     CAAnimationGroup *blowup = [self _blowupAnimationAtPoint:item.center];
     [item.layer addAnimation:blowup forKey:@"blowup"];
     item.center = item.startPoint;
-    
+
     // shrink other menu buttons
     for (int i = 0; i < [_menusArray count]; i ++)
     {
@@ -179,13 +179,13 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         otherItem.center = otherItem.startPoint;
     }
     _expanding = NO;
-    
+
     // rotate "add" button
     float angle = self.isExpanding ? -M_PI_4 : 0.0f;
     [UIView animateWithDuration:0.2f animations:^{
         _addButton.transform = CGAffineTransformMakeRotation(angle);
     }];
-    
+
     if ([_delegate respondsToSelector:@selector(AwesomeMenu:didSelectIndex:)])
     {
         [_delegate AwesomeMenu:self didSelectIndex:item.tag - 1000];
@@ -194,18 +194,18 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 
 #pragma mark - instant methods
 - (void)setMenusArray:(NSArray *)aMenusArray
-{	
+{
     if (aMenusArray == _menusArray)
     {
         return;
     }
     _menusArray = [aMenusArray copy];
-    
-    
+
+
     // clean subviews
-    for (UIView *v in self.subviews) 
+    for (UIView *v in self.subviews)
     {
-        if (v.tag >= 1000) 
+        if (v.tag >= 1000)
         {
             [v removeFromSuperview];
         }
@@ -225,7 +225,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         CGPoint nearPoint = CGPointMake(startPoint.x + nearRadius * sinf(i * menuWholeAngle / count), startPoint.y - nearRadius * cosf(i * menuWholeAngle / count));
         item.nearPoint = RotateCGPointAroundCenter(nearPoint, startPoint, rotateAngle);
         CGPoint farPoint = CGPointMake(startPoint.x + farRadius * sinf(i * menuWholeAngle / count), startPoint.y - farRadius * cosf(i * menuWholeAngle / count));
-        item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);  
+        item.farPoint = RotateCGPointAroundCenter(farPoint, startPoint, rotateAngle);
         item.center = item.startPoint;
         item.delegate = self;
 		[self insertSubview:item belowSubview:_addButton];
@@ -241,17 +241,17 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 	if (expanding) {
 		[self _setMenu];
 	}
-	
-    _expanding = expanding;    
-    
+
+    _expanding = expanding;
+
     // rotate add button
     float angle = self.isExpanding ? -M_PI_4 : 0.0f;
     [UIView animateWithDuration:0.2f animations:^{
         _addButton.transform = CGAffineTransformMakeRotation(angle);
     }];
-    
+
     // expand or close animation
-    if (!_timer) 
+    if (!_timer)
     {
         _flag = self.isExpanding ? 0 : ([_menusArray count] - 1);
         SEL selector = self.isExpanding ? @selector(_expand) : @selector(_close);
@@ -265,7 +265,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 #pragma mark - private methods
 - (void)_expand
 {
-	
+
     if (_flag == [_menusArray count])
     {
         _isAnimating = NO;
@@ -273,27 +273,27 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         _timer = nil;
         return;
     }
-    
+
     int tag = 1000 + _flag;
     AwesomeMenuItem *item = (AwesomeMenuItem *)[self viewWithTag:tag];
-    
+
     CAKeyframeAnimation *rotateAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotateAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:expandRotation],[NSNumber numberWithFloat:0.0f], nil];
     rotateAnimation.duration = 0.5f;
     rotateAnimation.keyTimes = [NSArray arrayWithObjects:
-                                [NSNumber numberWithFloat:.3], 
-                                [NSNumber numberWithFloat:.4], nil]; 
-    
+                                [NSNumber numberWithFloat:.3],
+                                [NSNumber numberWithFloat:.4], nil];
+
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.duration = 0.5f;
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, item.startPoint.x, item.startPoint.y);
     CGPathAddLineToPoint(path, NULL, item.farPoint.x, item.farPoint.y);
-    CGPathAddLineToPoint(path, NULL, item.nearPoint.x, item.nearPoint.y); 
-    CGPathAddLineToPoint(path, NULL, item.endPoint.x, item.endPoint.y); 
+    CGPathAddLineToPoint(path, NULL, item.nearPoint.x, item.nearPoint.y);
+    CGPathAddLineToPoint(path, NULL, item.endPoint.x, item.endPoint.y);
     positionAnimation.path = path;
     CGPathRelease(path);
-    
+
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
     animationgroup.duration = 0.5f;
@@ -303,12 +303,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     if(_flag == [_menusArray count] - 1){
         [animationgroup setValue:@"firstAnimation" forKey:@"id"];
     }
-    
+
     [item.layer addAnimation:animationgroup forKey:@"Expand"];
     item.center = item.endPoint;
-    
+
     _flag ++;
-    
+
 }
 
 - (void)_close
@@ -320,27 +320,27 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         _timer = nil;
         return;
     }
-    
+
     int tag = 1000 + _flag;
      AwesomeMenuItem *item = (AwesomeMenuItem *)[self viewWithTag:tag];
-    
+
     CAKeyframeAnimation *rotateAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotateAnimation.values = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f],[NSNumber numberWithFloat:closeRotation],[NSNumber numberWithFloat:0.0f], nil];
     rotateAnimation.duration = 0.5f;
     rotateAnimation.keyTimes = [NSArray arrayWithObjects:
-                                [NSNumber numberWithFloat:.0], 
+                                [NSNumber numberWithFloat:.0],
                                 [NSNumber numberWithFloat:.4],
-                                [NSNumber numberWithFloat:.5], nil]; 
-        
+                                [NSNumber numberWithFloat:.5], nil];
+
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.duration = 0.5f;
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, item.endPoint.x, item.endPoint.y);
     CGPathAddLineToPoint(path, NULL, item.farPoint.x, item.farPoint.y);
-    CGPathAddLineToPoint(path, NULL, item.startPoint.x, item.startPoint.y); 
+    CGPathAddLineToPoint(path, NULL, item.startPoint.x, item.startPoint.y);
     positionAnimation.path = path;
     CGPathRelease(path);
-    
+
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, rotateAnimation, nil];
     animationgroup.duration = 0.5f;
@@ -350,7 +350,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     if(_flag == 0){
         [animationgroup setValue:@"lastAnimation" forKey:@"id"];
     }
-    
+
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
 
@@ -372,14 +372,14 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.values = [NSArray arrayWithObjects:[NSValue valueWithCGPoint:p], nil];
-    positionAnimation.keyTimes = [NSArray arrayWithObjects: [NSNumber numberWithFloat:.3], nil]; 
-    
+    positionAnimation.keyTimes = [NSArray arrayWithObjects: [NSNumber numberWithFloat:.3], nil];
+
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(3, 3, 1)];
-    
+
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.toValue  = [NSNumber numberWithFloat:0.0f];
-    
+
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
     animationgroup.duration = 0.3f;
@@ -392,19 +392,19 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.values = [NSArray arrayWithObjects:[NSValue valueWithCGPoint:p], nil];
-    positionAnimation.keyTimes = [NSArray arrayWithObjects: [NSNumber numberWithFloat:.3], nil]; 
-    
+    positionAnimation.keyTimes = [NSArray arrayWithObjects: [NSNumber numberWithFloat:.3], nil];
+
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(.01, .01, 1)];
-    
+
     CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacityAnimation.toValue  = [NSNumber numberWithFloat:0.0f];
-    
+
     CAAnimationGroup *animationgroup = [CAAnimationGroup animation];
     animationgroup.animations = [NSArray arrayWithObjects:positionAnimation, scaleAnimation, opacityAnimation, nil];
     animationgroup.duration = 0.3f;
     animationgroup.fillMode = kCAFillModeForwards;
-    
+
     return animationgroup;
 }
 

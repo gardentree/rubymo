@@ -18,9 +18,9 @@ class TopViewController < UIViewController
     }.call
 
     lambda {
-      image   = UIImage.imageNamed('bg-menuitem.png')
-      pressed = UIImage.imageNamed('bg-menuitem-hightlighted.png')
-      star    = UIImage.imageNamed('icon-star.png')
+      image   = UIImage.imageNamed('menu/bg-menuitem.png')
+      pressed = UIImage.imageNamed('menu/bg-menuitem-hightlighted.png')
+      star    = UIImage.imageNamed('menu/icon-star.png')
 
       item1 = AwesomeMenuItem.alloc.initWithImage(image,highlightedImage: pressed,ContentImage: star,highlightedContentImage: nil)
       item2 = AwesomeMenuItem.alloc.initWithImage(image,highlightedImage: pressed,ContentImage: star,highlightedContentImage: nil)

@@ -1,10 +1,13 @@
 PODS:
   - ECSlidingViewController (0.10.0)
+  - UrbanAirship-iOS-SDK (1.4.0)
 
 DEPENDENCIES:
   - ECSlidingViewController
+  - UrbanAirship-iOS-SDK (~> 1.4.0)
 
 SPEC CHECKSUMS:
   ECSlidingViewController: fc9a9a6564d4a64c0d8c7cf5583d2b9a469ecd04
+  UrbanAirship-iOS-SDK: 169e60a879cc77a06eb3188c88004776c27464f0
 
 COCOAPODS: 0.18.1

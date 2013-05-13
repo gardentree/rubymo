@@ -11,11 +11,30 @@ Motion::Project::App.setup do |app|
   app.name = 'rubymo'
   app.identifier            = config['identifier']
   app.provisioning_profile  = config['development']['provisioning']
+  app.entitlements['aps-environment'] = 'development'
 
-  app.frameworks << "QuartzCore"
+  app.frameworks += [
+    'QuartzCore',
+    'CFNetwork',
+    'CoreGraphics',
+    'Foundation',
+    'MobileCoreServices',
+    'Security',
+    'SystemConfiguration',
+    'UIKit',
+    'libz.dylib',
+    'libsqlite3.dylib',
+    'CoreTelephony',
+    'StoreKit',
+    'CoreLocation',
+    'MessageUI',
+    'AudioToolbox',
+    'MapKit',
+  ]
   app.vendor_project('vendor/AwesomeMenu',:xcode)
 
   app.pods do
     pod 'ECSlidingViewController'
+    pod 'UrbanAirship-iOS-SDK', '~> 1.4.0'
   end
 end

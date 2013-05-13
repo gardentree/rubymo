@@ -19,4 +19,6 @@ nbproject
 build-iPhone*
 
 config.yml
+resources/AirshipConfig.plist
+
 vendor/Pods

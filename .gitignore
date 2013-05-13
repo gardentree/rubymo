@@ -16,6 +16,7 @@ nbproject
 .idea
 
 .build
-build-iPhoneSimulator
+build-iPhone*
 
+config.yml
 vendor/Pods
